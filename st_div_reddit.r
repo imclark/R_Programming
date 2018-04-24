@@ -40,7 +40,7 @@ fit.log <- fitdistr(post_num, "lognormal")
 
 sub_posts_ordered <- sub_posts[ order(sub_posts[,2]), ]
 
-#grab all subredits with posts greater than 10 and less than 100
+#grab all subreddits with posts greater than 50 and less than 100
 mod_posts <- subset(sub_posts, Freq>50 & Freq<100)
 
 descdist(mod_posts$Freq, discrete = FALSE)
@@ -52,6 +52,8 @@ descdist(mod_posts$Freq, discrete = FALSE)
 # estimated sd:  12.13335 
 # estimated skewness:  -0.2361813 
 # estimated kurtosis:  3.050051 
+
+hist(mod_posts$Freq)
 
 mod_fit_norm = fitdist(mod_posts$Freq, "norm")
 plot(mod_fit_norm)
